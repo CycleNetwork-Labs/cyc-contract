@@ -41,7 +41,6 @@ const deploy: DeployFunction = async (hre) => {
             'Cycle Network Token', // name
             'CYC', // symbol
             endpointV2Deployment.address, // LayerZero's EndpointV2 address
-            deployer, // owner
             process.env.INIT_RECEIVER, // init receiver
         ],
         log: true,

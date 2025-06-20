@@ -40,7 +40,6 @@ const deploy: DeployFunction = async (hre) => {
             'Test Cycle Network Token', // name
             'TESTCYC', // symbol
             endpointV2Deployment.address, // LayerZero's EndpointV2 address
-            deployer, // owner
             deployer, // init receiver
         ],
         log: true,

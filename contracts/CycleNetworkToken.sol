@@ -10,9 +10,8 @@ contract CycleNetworkToken is OFT, ERC20Permit {
         string memory _name,
         string memory _symbol,
         address _lzEndpoint,
-        address _delegate,
         address _receiver
-    ) OFT(_name, _symbol, _lzEndpoint, _delegate) Ownable(_delegate) ERC20Permit(_name) {
+    ) OFT(_name, _symbol, _lzEndpoint, msg.sender) Ownable(msg.sender) ERC20Permit(_name) {
         _mint(_receiver, 1_000_000_000 * 1e18);
     }
 }

@@ -9,7 +9,6 @@ contract CycleNetworkOFT is OFT, ERC20Permit {
     constructor(
         string memory _name,
         string memory _symbol,
-        address _lzEndpoint,
-        address _delegate
-    ) OFT(_name, _symbol, _lzEndpoint, _delegate) Ownable(_delegate) ERC20Permit(_name) {}
+        address _lzEndpoint
+    ) OFT(_name, _symbol, _lzEndpoint, msg.sender) Ownable(msg.sender) ERC20Permit(_name) {}
 }
