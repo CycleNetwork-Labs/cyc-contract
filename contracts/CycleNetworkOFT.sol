@@ -5,14 +5,11 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { OFT } from "@layerzerolabs/oft-evm/contracts/OFT.sol";
 
-contract CycleNetworkToken is OFT, ERC20Permit {
+contract CycleNetworkOFT is OFT, ERC20Permit {
     constructor(
         string memory _name,
         string memory _symbol,
         address _lzEndpoint,
-        address _delegate,
-        address _receiver
-    ) OFT(_name, _symbol, _lzEndpoint, _delegate) Ownable(_delegate) ERC20Permit(_name) {
-        _mint(_receiver, 1_000_000_000 * 1e18);
-    }
+        address _delegate
+    ) OFT(_name, _symbol, _lzEndpoint, _delegate) Ownable(_delegate) ERC20Permit(_name) {}
 }
