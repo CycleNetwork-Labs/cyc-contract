@@ -82,6 +82,11 @@ const config: HardhatUserConfig = {
             url: process.env.RPC_URL_BERA_MAINNET || 'https://berachain.drpc.org',
             accounts,
         },
+        'eth-mainnet': {
+            eid: EndpointId.ETHEREUM_V2_MAINNET,
+            url: process.env.RPC_URL_BERA_MAINNET || 'https://mainnet.infura.io/v3/1989ae0ef1a64a64a06e7e926d65bc54',
+            accounts,
+        },
         hardhat: {
             // Need this for testing because TestHelperOz5.sol is exceeding the compiled contract size limit
             allowUnlimitedContractSize: true,

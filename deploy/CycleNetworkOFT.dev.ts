@@ -44,7 +44,7 @@ const deploy: DeployFunction = async (hre) => {
         skipIfAlreadyDeployed: false,
     })
 
-    console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}`)
+    console.log(`Deployed contract: ${contractName}, network: ${hre.network.name}, address: ${address}, endpoint: ${endpointV2Deployment.address}`)
 }
 
 deploy.tags = [contractName + '-dev'] // CycleNetworkOFT-dev
