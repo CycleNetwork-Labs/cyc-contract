@@ -11,6 +11,7 @@ const deploy: DeployFunction = async (hre) => {
     const { deployer } = await getNamedAccounts()
 
     assert(deployer, 'Missing named deployer account')
+    assert(process.env.DELEGATE, 'env DELEGATE not set')
     assert(process.env.INIT_RECEIVER, 'env INIT_RECEIVER not set')
     assert(hre.network.name == 'bsc-mainnet', 'Not bsc-mainnet')
 
@@ -41,6 +42,7 @@ const deploy: DeployFunction = async (hre) => {
             'Cycle Network Token', // name
             'CYC', // symbol
             endpointV2Deployment.address, // LayerZero's EndpointV2 address
+            process.env.DELEGATE, // delegate
             process.env.INIT_RECEIVER, // init receiver
         ],
         log: true,
