@@ -68,10 +68,10 @@ task('lz:oft:safesend', 'Sends tokens from either OFT or OFTAdapter')
 
        
 
-        console.log(`sending ${taskArgs.amount} token(s) to network ${getNetworkNameForEid(eidB)} (${eidB}), fee ${formatEther(nativeFee)}`)
+        console.log(`sending ${taskArgs.amount} token(s) to network ${getNetworkNameForEid(eidB)} (${eidB}), fee ${formatEther(nativeFee)}\n`)
 
-        console.log(`BNB Value: ${nativeFee}`)
-        console.log(`_sendParam: (${sendParam.dstEid},'${ethers.utils.hexlify(sendParam.to)}','${sendParam.amountLD}','${sendParam.minAmountLD}','${ethers.utils.hexlify(sendParam.extraOptions)}','${ethers.utils.hexlify(sendParam.composeMsg)}','${ethers.utils.hexlify(sendParam.oftCmd)}')`)
-        console.log(`_fee: (${nativeFee},0)`)
-        console.log(`_refundAddress: ${signer.address}`)
+        console.log(`    _sendParam: ["${sendParam.dstEid}","${ethers.utils.hexlify(sendParam.to)}","${sendParam.amountLD}","${sendParam.minAmountLD}","${ethers.utils.hexlify(sendParam.extraOptions)}","${ethers.utils.hexlify(sendParam.composeMsg)}","${ethers.utils.hexlify(sendParam.oftCmd)}"]`)
+        console.log(`     BNB Value: ${formatEther(nativeFee)}`)
+        console.log(`          _fee: ["${nativeFee}",0] // same with BNB Value`)
+        console.log(`_refundAddress: ${toAddress}\n`)
     })
