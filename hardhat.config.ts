@@ -1,8 +1,3 @@
-// Get the environment configuration from .env file
-//
-// To make use of automatic environment setup:
-// - Duplicate .env.example file and name it .env
-// - Fill in the environment variables
 import 'dotenv/config'
 
 import 'hardhat-deploy'
@@ -12,13 +7,7 @@ import '@nomicfoundation/hardhat-verify'
 import '@nomicfoundation/hardhat-chai-matchers'
 import { HardhatUserConfig, HttpNetworkAccountsUserConfig } from 'hardhat/types'
 
-// Set your preferred authentication method
-//
-// If you prefer using a mnemonic, set a MNEMONIC environment variable
-// to a valid mnemonic
 const MNEMONIC = process.env.MNEMONIC
-
-// If you prefer to be authenticated using a private key, set a PRIVATE_KEY environment variable
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 
 const accounts: HttpNetworkAccountsUserConfig | undefined = MNEMONIC
@@ -51,22 +40,17 @@ const config: HardhatUserConfig = {
         ],
     },
     networks: {
-        'cycle-mainnet': {
-            url: 'https://sailboat-rpc-mainnet.cyclenetwork.io',
-            accounts,
-        },
         'bsc-mainnet': {
             url: process.env.RPC_URL_BSC_MAINNET || 'https://bsc-dataseed.bnbchain.org',
             accounts,
         },
         hardhat: {
-            // Need this for testing because TestHelperOz5.sol is exceeding the compiled contract size limit
             allowUnlimitedContractSize: true,
         },
     },
     namedAccounts: {
         deployer: {
-            default: 0, // wallet address of index[0], of the mnemonic in .env
+            default: 0,
         },
     },
     etherscan: {
