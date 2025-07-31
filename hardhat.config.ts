@@ -7,15 +7,10 @@ import 'dotenv/config'
 
 import 'hardhat-deploy'
 import 'hardhat-contract-sizer'
-import '@nomiclabs/hardhat-ethers'
-import '@layerzerolabs/toolbox-hardhat'
+import '@nomicfoundation/hardhat-ethers'
 import '@nomicfoundation/hardhat-verify'
+import '@nomicfoundation/hardhat-chai-matchers'
 import { HardhatUserConfig, HttpNetworkAccountsUserConfig } from 'hardhat/types'
-
-import { EndpointId } from '@layerzerolabs/lz-definitions'
-
-import './tasks/transfer'
-import './tasks/transfer_safe'
 
 // Set your preferred authentication method
 //
@@ -45,7 +40,7 @@ const config: HardhatUserConfig = {
     solidity: {
         compilers: [
             {
-                version: '0.8.22',
+                version: '0.8.20',
                 settings: {
                     optimizer: {
                         enabled: true,
@@ -56,39 +51,12 @@ const config: HardhatUserConfig = {
         ],
     },
     networks: {
-        'optimism-testnet': {
-            eid: EndpointId.OPTSEP_V2_TESTNET,
-            url: process.env.RPC_URL_OP_SEPOLIA || 'https://optimism-sepolia.gateway.tenderly.co',
-            accounts,
-        },
-        'avalanche-testnet': {
-            eid: EndpointId.AVALANCHE_V2_TESTNET,
-            url: process.env.RPC_URL_FUJI || 'https://avalanche-fuji.drpc.org',
-            accounts,
-        },
-        'arbitrum-testnet': {
-            eid: EndpointId.ARBSEP_V2_TESTNET,
-            url: process.env.RPC_URL_ARB_SEPOLIA || 'https://arbitrum-sepolia.gateway.tenderly.co',
+        'cycle-mainnet': {
+            url: 'https://sailboat-rpc-mainnet.cyclenetwork.io',
             accounts,
         },
         'bsc-mainnet': {
-            eid: EndpointId.BSC_V2_MAINNET,
             url: process.env.RPC_URL_BSC_MAINNET || 'https://bsc-dataseed.bnbchain.org',
-            accounts,
-        },
-        'arbitrum-mainnet': {
-            eid: EndpointId.ARBITRUM_V2_MAINNET,
-            url: process.env.RPC_URL_ARB_MAINNET || 'https://arb1.arbitrum.io/rpc',
-            accounts,
-        },
-        'bera-mainnet': {
-            eid: EndpointId.BERA_V2_MAINNET,
-            url: process.env.RPC_URL_BERA_MAINNET || 'https://berachain.drpc.org',
-            accounts,
-        },
-        'eth-mainnet': {
-            eid: EndpointId.ETHEREUM_V2_MAINNET,
-            url: process.env.RPC_URL_BERA_MAINNET || 'https://mainnet.infura.io/v3/1989ae0ef1a64a64a06e7e926d65bc54',
             accounts,
         },
         hardhat: {
@@ -102,10 +70,7 @@ const config: HardhatUserConfig = {
         },
     },
     etherscan: {
-        apiKey: {
-            mainnet: process.env.ETHERSCAN_API_KEY!,
-            bsc: process.env.BSCSCAN_API_KEY!,
-        },
+        apiKey: process.env.API_KEY!,
     },
 }
 
