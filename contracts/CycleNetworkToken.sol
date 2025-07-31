@@ -16,12 +16,15 @@ contract CycleNetworkToken is ERC20, Ownable {
         string memory name,
         string memory symbol,
         uint256 initialSupply,
+        address initialHolder,
+        address initialOwner,
         uint256 _transferAllowedTimestamp
     ) ERC20(name, symbol) {
         require(_transferAllowedTimestamp >= block.timestamp, "misconfig");
         transferAllowedTimestamp = _transferAllowedTimestamp;
-        whitelist[msg.sender] = true;
-        _mint(msg.sender, initialSupply);
+        whitelist[initialHolder] = true;
+        _mint(initialHolder, initialSupply);
+        _transferOwnership(initialOwner);
     }
 
     function setTransferAllowedTimestamp(uint256 newTimestamp) external onlyOwner {
